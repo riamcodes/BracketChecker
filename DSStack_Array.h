@@ -70,7 +70,7 @@ template <typename T>
 }
 
 // template <typename T>
-// void DSStack_array<T>::resize() {
+// void DSStack_Array<T>::resize() {
 //     //if the array is too small multiply its size by 2
 //     capacity *=2; 
 //     T* tempArray = new T[capacity];
