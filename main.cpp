@@ -2,7 +2,7 @@
 #include <algorithm>
 
 #include "DSList.h"
-#include "DSStack.h"
+#include "DSStack_Array.h"
 
 using namespace std;
 
