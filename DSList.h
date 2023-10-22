@@ -42,12 +42,7 @@ DSList(): head(nullptr), length(0){}
 //Destructor clear the List
 
 ~DSList() {
-    while (head != nullptr) {
-        Node* temp = head;
-        head = temp->next;
-        delete temp;
-    }
-    length = 0;
+    clearList();
 }
 
 //Copy constructor  copy the list appears to be a shallow copy but its not
@@ -62,7 +57,8 @@ DSList(const DSList &copy){
 
 DSList<T> &operator= (const DSList &copy){
     if (this!= &copy){
-        ~DSList();
+      //  ~DSList();
+      clearList();
         Node *newNode = copy.head;
         while (newNode!= nullptr){
             push_back(newNode->data);
@@ -92,21 +88,23 @@ bool isEmpty() const{
 
 // // clear the whole list
 
- DSList clearList(){
-~DSList();
+ void clearList(){
+ while (head != nullptr) {
+            Node *temp = head;
+            head = head->next;
+            delete temp;
+        }
+        length = 0;
 }
 
 // find an element with a specific value (and return the position. First element in list is pos 0). Not found returns -1.
 
-int find(const T &val)
+int find(const T &val)const 
     {
         
             Node *newNode = head; 
               int i = 0;
-            if(newNode  == nullptr){
-                return -1;
-            }
-            while (newNode->next != nullptr)  
+            while (newNode != nullptr)  
             {
               
               if  (newNode->data == val){
@@ -139,14 +137,22 @@ void push_front(const T &val)
 void push_back(const T &val)
     {
         
-            Node *newNode = head; 
-            while (newNode->next != nullptr)  
+            Node *newNode = new Node(val);
+
+
+             if (isEmpty()) {
+        head = newNode;
+       
+    } else {
+             Node *temp = head;
+            while (temp->next != nullptr)  
             {
-                newNode = newNode->next;  
+                temp = temp->next;  
             }
-            newNode -> next = new Node(val);
-            length++;        
-        
+            temp-> next = newNode;
+             
+    }      
+        length++; 
     }
 
 
