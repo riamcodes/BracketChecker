@@ -160,7 +160,10 @@ void push_back(const T &val)
 
 // remove the first element(pop_front)
 void pop_front()
-    {
+    {if (isEmpty()) {
+        std::cout << "Error: Attempting to pop from an empty list." << std::endl;
+        return;
+    }
         
             Node *newNode = head; 
             head = head->next;
@@ -174,7 +177,10 @@ void pop_front()
 // remove the last element (pop_back)
 void pop_back()
     {
-
+  if (isEmpty()) {
+        std::cout << "Error: Attempting to pop from an empty list." << std::endl;
+        return;
+    }
  Node *newNode = head; 
             while (newNode->next->next != nullptr)  
             {

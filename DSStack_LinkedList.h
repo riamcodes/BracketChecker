@@ -41,7 +41,7 @@ T DSStack_LinkedList<T>::peek() const {
 
 template <typename T>
 bool DSStack_LinkedList<T>::isEmpty() const {
-    return list.isEmpty(); 
+    return list1.isEmpty(); 
 }
 
 // template <typename T>

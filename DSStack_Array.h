@@ -17,6 +17,8 @@ private:
 public:
      DSStack_Array();     // Constructor
      ~DSStack_Array();    // Destructor
+     DSStack_Array(const DSStack_Array<T>& other); // Copy Constructor
+    DSStack_Array<T>& operator=(const DSStack_Array<T>& other); // Copy Assignment Operator
 
     bool isEmpty();       // Check if the stack is empty
 
@@ -24,7 +26,7 @@ public:
     T pop();                    // Remove and return the top element
     T peek() const;              // View  top element without popping
     void print();
-
+    void resize();
 };
 
 
@@ -41,6 +43,36 @@ template <typename T>
 DSStack_Array<T>::~DSStack_Array() {
     delete[] arr; // Clean up memory
 }
+
+
+//Copy Constructor
+template <typename T>
+DSStack_Array<T>::DSStack_Array(const DSStack_Array<T>& other) {
+    capacity = other.capacity;
+    topIndex = other.topIndex;
+    arr = new T[capacity];
+    for (int i = 0; i <= topIndex; ++i) {
+        arr[i] = other.arr[i];
+    }
+}
+
+// Copy Assignment Operator
+template <typename T>
+DSStack_Array<T>& DSStack_Array<T>::operator=(const DSStack_Array<T>& other) {
+    if (this != &other) {
+        delete[] arr;
+        
+        arr = new T[other.capacity];
+        std::copy(other.arr, other.arr + other.topIndex + 1, arr);
+        
+        capacity = other.capacity;
+        topIndex = other.topIndex;
+    }
+    return *this;
+}
+
+
+
 
 //print function
 template <typename T>
@@ -69,19 +101,19 @@ template <typename T>
  }
 }
 
-// template <typename T>
-// void DSStack_Array<T>::resize() {
-//     //if the array is too small multiply its size by 2
-//     capacity *=2; 
-//     T* tempArray = new T[capacity];
+template <typename T>
+void DSStack_Array<T>::resize() {
+    //if the array is too small multiply its size by 2
+    capacity *=2; 
+    T* tempArray = new T[capacity];
 
-//     for (int i = 0; i <= topIndex; i++) {
-//         tempArray[i] = arr[i];
-//     }
+    for (int i = 0; i <= topIndex; i++) {
+        tempArray[i] = arr[i];
+    }
 
-//     delete[] arr;
-//     arr = tempArray;
-// }
+    delete[] arr;
+    arr = tempArray;
+}
 
 
 // Push function

@@ -12,25 +12,83 @@ TEST_CASE("Check that DSStack works", "[DSStack]")
 
    DSStack_Array<char> stack1;
    std:: cout << stack1.isEmpty();
-   REQUIRE(stack1.isEmpty() == true); //empty
 
+   //initialized stack should be empty
+   REQUIRE(stack1.isEmpty() == true); //passed
+
+   //push a
     stack1.push('a');
     std:: cout << stack1.isEmpty();
-    REQUIRE(stack1.isEmpty() == false);
+
+    //tests stack no longer empty
+    REQUIRE(stack1.isEmpty() == false);//passed 
+
+
     std :: cout << stack1.peek();
-     REQUIRE(stack1.isEmpty() == false);
+   //peek only looks at the top
+   REQUIRE(stack1.isEmpty() == false); //passed
+
+
     std :: cout << stack1.pop();
-     REQUIRE(stack1.isEmpty() == true);
-     stack1.push('a');
-        stack1.push('b');
-           stack1.push('c');
-              stack1.push('d');
-              stack1.pop();
-                 stack1.push('e');
-                 stack1.print();
 
-     // REQUIRE(stack1.isArrayEmpty() == true); pop == a 
-    // This creates an error
-}
+    //pop removed the element 
+     REQUIRE(stack1.isEmpty() == true);//passed 
 
-// you can run the test using Run CTest in the task bar or by running the tests executable. 
+
+      stack1.push('a');
+      stack1.push('b');
+      stack1.push('c');
+      stack1.push('d');
+     REQUIRE(stack1.pop() == 'd');
+      stack1.push('e');
+               //  stack1.print();
+      
+
+
+
+
+
+
+
+
+
+   DSStack_Array<int> originalStack;
+
+    originalStack.push(1);
+    originalStack.push(2);
+    originalStack.push(3);
+
+        DSStack_Array<int> copiedStack(originalStack);
+
+        // The copied stack should have the same values
+        REQUIRE(copiedStack.pop() == 3);
+        REQUIRE(copiedStack.pop() == 2);
+        REQUIRE(copiedStack.pop() == 1);
+        REQUIRE(copiedStack.isEmpty() == true);
+
+        // The original stack should not be affected
+        REQUIRE(originalStack.pop() == 3);
+        REQUIRE(originalStack.pop() == 2);
+        REQUIRE(originalStack.pop() == 1);
+        REQUIRE(originalStack.isEmpty() == true);
+
+
+        DSStack_Array<int> testStack;
+        testStack.push(1);
+        testStack.push(2);
+        testStack.push(3);
+
+        DSStack_Array<int> stack2;
+       stack2 = testStack;
+
+        // The assigned stack should have the same values
+        REQUIRE(testStack.pop() == 3);
+        REQUIRE(testStack.pop() == 2);
+        REQUIRE(testStack.pop() == 1);
+        REQUIRE(testStack.isEmpty() == true);
+
+        // The original stack should not be affected
+          REQUIRE(stack2.isEmpty() == false);
+      
+    }
+
