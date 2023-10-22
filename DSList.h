@@ -189,6 +189,19 @@ void pop_back()
 
         
     }
+    
+   T peek() const {
+        if (head == nullptr) {
+            throw std::out_of_range("The list is empty.");
+        }
+
+        Node* newNode = head;
+        while (newNode ->next != nullptr) {
+            newNode = newNode->next;
+        }
+
+        return newNode->data;
+    }
 
 };
 
