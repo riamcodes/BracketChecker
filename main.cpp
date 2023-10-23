@@ -2,7 +2,7 @@
 #include <algorithm>
 
 #include "DSList.h"
-#include "DSStack_Array.h"
+#include "DSStack.h"
 #include "BracketChecker.h"
 
 using namespace std;

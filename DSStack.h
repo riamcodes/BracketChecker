@@ -1,12 +1,12 @@
 // Implement a stack based on an array.
-#ifndef DSSTACK_ARRAY_H
-#define DSSTACK_ARRAY_H
+#ifndef DSSTACK_H
+#define DSSTACK_H
 
  #include <iostream>
 
 
 template <typename T>
-class DSStack_Array {
+class DSStack{
 private:
      T* arr;              // Dynamic array to hold elements
     static const int INITIAL_CAPACITY = 100; // Default size to start with
@@ -15,10 +15,10 @@ private:
     //void resize();
 
 public:
-     DSStack_Array();     // Constructor
-     ~DSStack_Array();    // Destructor
-     DSStack_Array(const DSStack_Array<T>& other); // Copy Constructor
-    DSStack_Array<T>& operator=(const DSStack_Array<T>& other); // Copy Assignment Operator
+     DSStack();     // Constructor
+     ~DSStack();    // Destructor
+     DSStack(const DSStack<T>& other); // Copy Constructor
+    DSStack<T>& operator=(const DSStack<T>& other); // Copy Assignment Operator
 
     bool isEmpty();       // Check if the stack is empty
 
@@ -32,7 +32,7 @@ public:
 
 // Constructor
 template <typename T>
-DSStack_Array<T>::DSStack_Array() {
+DSStack<T>::DSStack() {
     arr = new T[INITIAL_CAPACITY];
     capacity = INITIAL_CAPACITY;
     topIndex = -1; // Empty stack to start with
@@ -40,14 +40,14 @@ DSStack_Array<T>::DSStack_Array() {
 
 // Destructor
 template <typename T>
-DSStack_Array<T>::~DSStack_Array() {
+DSStack<T>::~DSStack() {
     delete[] arr; // Clean up memory
 }
 
 
 //Copy Constructor
 template <typename T>
-DSStack_Array<T>::DSStack_Array(const DSStack_Array<T>& other) {
+DSStack<T>::DSStack(const DSStack<T>& other) {
     capacity = other.capacity;
     topIndex = other.topIndex;
     arr = new T[capacity];
@@ -58,7 +58,7 @@ DSStack_Array<T>::DSStack_Array(const DSStack_Array<T>& other) {
 
 // Copy Assignment Operator
 template <typename T>
-DSStack_Array<T>& DSStack_Array<T>::operator=(const DSStack_Array<T>& other) {
+DSStack<T>& DSStack<T>::operator=(const DSStack<T>& other) {
     if (this != &other) {
         delete[] arr;
         
@@ -76,7 +76,7 @@ DSStack_Array<T>& DSStack_Array<T>::operator=(const DSStack_Array<T>& other) {
 
 //print function
 template <typename T>
-void DSStack_Array<T>::print(){
+void DSStack<T>::print(){
     if (isEmpty() == true){
         std::cout << "stack is empty " << '\n';
     }
@@ -91,7 +91,7 @@ void DSStack_Array<T>::print(){
 
 // boolean to check if array empty
 template <typename T>
- bool DSStack_Array<T>::isEmpty(){
+ bool DSStack<T>::isEmpty(){
  if (topIndex == -1){
     return true;
  }
@@ -102,7 +102,7 @@ template <typename T>
 }
 
 template <typename T>
-void DSStack_Array<T>::resize() {
+void DSStack<T>::resize() {
     //if the array is too small multiply its size by 2
     capacity *=2; 
     T* tempArray = new T[capacity];
@@ -118,7 +118,7 @@ void DSStack_Array<T>::resize() {
 
 // Push function
 template <typename T>
-void DSStack_Array<T>::push(const T& value) {
+void DSStack<T>::push(const T& value) {
     if (topIndex == capacity - 1) {
       //  resize();
       std::cout << "array too small";
@@ -129,7 +129,7 @@ void DSStack_Array<T>::push(const T& value) {
 
 //pop function
 template <typename T>
-T DSStack_Array<T>::pop() {
+T DSStack<T>::pop() {
     if (isEmpty()) {
        std::cout << "Empty stack can't pop";
        //return //write an exception
@@ -140,7 +140,7 @@ T DSStack_Array<T>::pop() {
 
 //peek function
 template <typename T>
-T DSStack_Array<T>::peek() const {
+T DSStack<T>::peek() const {
     // if (isEmpty()) {
     //   std:: cout << "Empty stack can't peek";
     // }
@@ -152,4 +152,4 @@ T DSStack_Array<T>::peek() const {
 
 
 
-#endif // DSSTACK_ARRAY_H
+#endif // DSSTACK_H

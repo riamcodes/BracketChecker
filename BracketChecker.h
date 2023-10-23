@@ -2,7 +2,7 @@
 #define BRACKETCHECKER_H
 
 # include <map>
-# include "DSStack_Array.h"
+# include "DSStack.h"
 
 using namespace std;
 

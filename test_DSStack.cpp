@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch2/catch.hpp"
-#include "DSStack_Array.h"
+#include "DSStack.h"
 
 
 // add includes
@@ -10,7 +10,7 @@ TEST_CASE("Check that DSStack works", "[DSStack]")
 {
     // add test cases (create lists and specify what the expected output is)
 
-   DSStack_Array<char> stack1;
+   DSStack<char> stack1;
    std:: cout << stack1.isEmpty();
 
    //initialized stack should be empty
@@ -43,13 +43,13 @@ TEST_CASE("Check that DSStack works", "[DSStack]")
       stack1.push('e');
                //  stack1.print();
       
-   DSStack_Array<int> originalStack;
+   DSStack<int> originalStack;
 
     originalStack.push(1);
     originalStack.push(2);
     originalStack.push(3);
 
-        DSStack_Array<int> copiedStack(originalStack);
+        DSStack<int> copiedStack(originalStack);
 
         // The copied stack should have the same values
         REQUIRE(copiedStack.pop() == 3);
@@ -64,12 +64,12 @@ TEST_CASE("Check that DSStack works", "[DSStack]")
         REQUIRE(originalStack.isEmpty() == true);
 
 
-        DSStack_Array<int> testStack;
+        DSStack<int> testStack;
         testStack.push(1);
         testStack.push(2);
         testStack.push(3);
 
-        DSStack_Array<int> stack2;
+        DSStack<int> stack2;
        stack2 = testStack;
 
         // The assigned stack should have the same values

@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 #include "BracketChecker.h"
-#include "DSStack_Array.h"
+#include "DSStack.h"
 #include <map>
 #include <iomanip>
 
@@ -19,7 +19,7 @@ void BracketChecker::checkArray() {
     }
 
     //once file is open declare DSStack_Array
-    DSStack_Array<char> bracketStack;
+    DSStack<char> bracketStack;
     std :: string line; 
 
 
