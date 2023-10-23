@@ -55,7 +55,7 @@ DSList(const DSList &copy){
 
 //
 
-DSList<T> &operator= (const DSList &copy){
+DSList<T> &operator= (const DSList &copy){  
     if (this!= &copy){
       //  ~DSList();
       clearList();

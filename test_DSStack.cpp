@@ -43,15 +43,6 @@ TEST_CASE("Check that DSStack works", "[DSStack]")
       stack1.push('e');
                //  stack1.print();
       
-
-
-
-
-
-
-
-
-
    DSStack_Array<int> originalStack;
 
     originalStack.push(1);

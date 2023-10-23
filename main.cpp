@@ -3,11 +3,16 @@
 
 #include "DSList.h"
 #include "DSStack_Array.h"
+#include "BracketChecker.h"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
+ 
+ BracketChecker bc;
+ bc.checkArray();
+
 
     cout << "Checker not implemented!" << endl;
 

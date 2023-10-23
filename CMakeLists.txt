@@ -10,7 +10,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
 
 # Create the executable for sorting
-add_executable(check_brackets main.cpp)
+add_executable(check_brackets main.cpp BracketChecker.cpp)
 #add_executable(check_brackets_vector main_vector.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
