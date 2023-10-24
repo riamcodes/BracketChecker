@@ -9,11 +9,11 @@ using namespace std;
 class BracketChecker {
 public:
     void checkArray();
+    void checkList();
 
 private:
 //    map<DSString, int> dictionary;
-   double percentage;
-   double accuracyCounter;
-   double tweetsClassified; 
+      DSStack<char> bracketStack;
+      //DSStack_LinkedList<char> bracketStackList;
 };
 #endif
