@@ -13,10 +13,11 @@
 using namespace std;
 
 
-void BracketChecker::checkArray() { 
+void BracketChecker::checkArray(char* argv) { 
 int errorLine  = 0;
     //file is read in through passed arg
-    ifstream file("/users7/cse/rmukherji/assignment-3-do-my-brackets-match-riamuk101/test_data/DSVector_bad.h");
+    // ifstream file("/users7/cse/rmukherji/assignment-3-do-my-brackets-match-riamuk101/test_data/DSVector_bad.h");
+    ifstream file(argv);
     //std::ifstream file("/users7/cse/rmukherji/assignment-3-do-my-brackets-match-riamuk101/test_data/fake.txt");
     if (!file.good())
     {
@@ -69,10 +70,11 @@ else{
 
 }//end checkArray
 
-void BracketChecker::checkList() { 
+void BracketChecker::checkList(char* argv) { 
 int errorLine  = 0;
     //file is read in through passed arg
-     ifstream file("/users7/cse/rmukherji/assignment-3-do-my-brackets-match-riamuk101/test_data/DSVector_bad.h");
+     //ifstream file("/users7/cse/rmukherji/assignment-3-do-my-brackets-match-riamuk101/test_data/DSVector_bad.h");
+     ifstream file(argv);
     //std::ifstream file("/users7/cse/rmukherji/assignment-3-do-my-brackets-match-riamuk101/test_data/fake.txt");
     if (!file.good())
      {

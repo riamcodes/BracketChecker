@@ -10,8 +10,8 @@ using namespace std;
 
 class BracketChecker {
 public:
-    void checkArray();
-    void checkList();
+    void checkArray(char* argv);
+    void checkList(char* argv);
 
 private:
 //    map<DSString, int> dictionary;

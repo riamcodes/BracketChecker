@@ -11,8 +11,8 @@ int main(int argc, char **argv)
 {
  
  BracketChecker bc;
- bc.checkArray();
- bc.checkList();
+ bc.checkArray(argv[1]);
+ bc.checkList(argv[1]);
 
 
     cout << "Checker not implemented!" << endl;
