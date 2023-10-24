@@ -12,7 +12,7 @@ int main(int argc, char **argv)
  
  BracketChecker bc;
  bc.checkArray();
- //bc.checkList();
+ bc.checkList();
 
 
     cout << "Checker not implemented!" << endl;

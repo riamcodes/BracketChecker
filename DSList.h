@@ -162,6 +162,7 @@ void push_back(const T &val)
 void pop_front()
     {if (isEmpty()) {
         std::cout << "Error: Attempting to pop from an empty list." << std::endl;
+        
         return;
     }
         
@@ -181,7 +182,14 @@ void pop_back()
         std::cout << "Error: Attempting to pop from an empty list." << std::endl;
         return;
     }
+   
  Node *newNode = head; 
+  if(newNode-> next == nullptr){
+        delete head;
+        length-- ; 
+        head = nullptr;
+        return;
+    }
             while (newNode->next->next != nullptr)  
             {
                 newNode = newNode->next;  
