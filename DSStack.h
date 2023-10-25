@@ -9,10 +9,10 @@ template <typename T>
 class DSStack{
 private:
      T* arr;              // Dynamic array to hold elements
-    static const int INITIAL_CAPACITY = 100; // Default size to start with
+    static const int INITIAL_CAPACITY = 50; // Default size to start with
      int capacity;        // Total capacity of the stack
      int topIndex;        // Index of the top element
-    //void resize();
+    void resize();
 
 public:
      DSStack();     // Constructor
@@ -26,7 +26,7 @@ public:
     T pop();                    // Remove and return the top element
     T peek() const;              // View  top element without popping
     void print();
-    void resize();
+  
 };
 
 
@@ -120,7 +120,7 @@ void DSStack<T>::resize() {
 template <typename T>
 void DSStack<T>::push(const T& value) {
     if (topIndex == capacity - 1) {
-      //  resize();
+       resize();
       std::cout << "array too small";
     }
     topIndex += 1;
