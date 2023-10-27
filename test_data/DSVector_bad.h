@@ -160,7 +160,7 @@ public:
 
   iterator begin()
     return &objects[0];
-  }
+}
 
   const_iterator begin() const
   {

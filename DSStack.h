@@ -3,16 +3,17 @@
 #define DSSTACK_H
 
  #include <iostream>
+ #include <stdexcept>
 
 
 template <typename T>
 class DSStack{
 private:
      T* arr;              // Dynamic array to hold elements
-    static const int INITIAL_CAPACITY = 50; // Default size to start with
+    static const int INITIAL_CAPACITY = 100; // Default size to start with
      int capacity;        // Total capacity of the stack
      int topIndex;        // Index of the top element
-    void resize();
+   // void resize(); THIS IS NOT IMPLEMENTED BUT I WANT TO KEEP IT HERE I did not want to go through the hassle of testing it
 
 public:
      DSStack();     // Constructor
@@ -24,7 +25,7 @@ public:
 
      void push(const T& value);  // Add an element to the top
     T pop();                    // Remove and return the top element
-    T peek() const;              // View  top element without popping
+    T peek() ;              // View  top element without popping
     void print();
   
 };
@@ -101,27 +102,27 @@ template <typename T>
  }
 }
 
-template <typename T>
-void DSStack<T>::resize() {
-    //if the array is too small multiply its size by 2
-    capacity *=2; 
-    T* tempArray = new T[capacity];
+// template <typename T> 
+// void DSStack<T>::resize() { function here for reference incase I need to write one later NOT UTILIZED here
+//     //if the array is too small multiply its size by 2
+//     capacity *=2; 
+//     T* tempArray = new T[capacity];
 
-    for (int i = 0; i <= topIndex; i++) {
-        tempArray[i] = arr[i];
-    }
+//     for (int i = 0; i <= topIndex; i++) {
+//         tempArray[i] = arr[i];
+//     }
 
-    delete[] arr;
-    arr = tempArray;
-}
+//     delete[] arr;
+//     arr = tempArray;
+// }
 
 
 // Push function
 template <typename T>
 void DSStack<T>::push(const T& value) {
     if (topIndex == capacity - 1) {
-       resize();
-      std::cout << "array too small";
+    //    resize();
+     throw std::runtime_error("Stack overflow: array too small can't push");
     }
     topIndex += 1;
     arr[topIndex] = value;
@@ -131,8 +132,7 @@ void DSStack<T>::push(const T& value) {
 template <typename T>
 T DSStack<T>::pop() {
     if (isEmpty()) {
-       std::cout << "Empty stack can't pop";
-       //return //write an exception
+      throw std::runtime_error("Stack underflow: empty stack can't pop");
     }
     return arr[topIndex--];
 }
@@ -140,15 +140,13 @@ T DSStack<T>::pop() {
 
 //peek function
 template <typename T>
-T DSStack<T>::peek() const {
-    // if (isEmpty()) {
-    //   std:: cout << "Empty stack can't peek";
-    // }
+T DSStack<T>::peek() {
+    if (isEmpty()) {
+    throw std::runtime_error("Stack underflow: empty stack can't peek");
+    }
     return arr[topIndex];
+    
 }
-
-
-
 
 
 
