@@ -38,7 +38,7 @@ void BracketChecker::checkArray(char* argv) {
             else if ((potentialBracket=='}')||(potentialBracket==']')||(potentialBracket==')')) {
                 // If stack is empty, there's no opening bracket to match this
                 if (bracketStack.isEmpty() == true){
-                    cout << "Bracket Mismatch Detected for " << bracketStack.peek() << " in line " << errorLine << "." << endl;
+                    cout << "Bracket Mismatch Detected for " << potentialBracket << " in line " << errorLine << "." << endl;
     return;
                     
                 }
@@ -98,8 +98,7 @@ void BracketChecker::checkList(char* argv) {
 
                 // If stack is empty, there's no opening bracket to match this
                 if (bracketStackList.isEmpty() == true){
-                   cout << "Bracket Mismatch Detected for " << bracketStackList.peek() << " in line " << errorLine << "." << endl;
-    return;
+                   cout << "Bracket Mismatch Detected for " << potentialBracket << " in line " << errorLine << "." << endl;
                     return;
                 }
 
