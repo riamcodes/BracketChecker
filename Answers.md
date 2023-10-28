@@ -16,15 +16,23 @@ Place [x] for what applies.
 ## Answers
 1. How long did the program take to check all three test files with each version?  Describe what differences in run time you expect for your implementation (use Big-O notation).
 
-   > Your answer
+   > To check all three files using DSStack it took 4514 microseconds. To check all three using DSS list it took 2184 microseconds. I didn't expect the differences for the run time to be much because these two should have the same big oh notation of O(nm). Each line in the file is n and each character in the line is m for my bracket checking function. The complexity for a list and an array is O(1) so overall that leaves us with O(nm).
 
 2. Discuss the difference in memory usage based on **your** implementation.
 
-   > Your answer
+  Array-based Stack Implementation (DSStack):
+  Starts with a fixed size of INITIAL_CAPACITY which is at 100 upon initialization, it allocates memory for 100 elements regardless of whether used or not. When my stack reaches capacity it can not resize itself and will fail which is not good. I wrote a resize function for it, but if I resize it, that is very costly and slow for my program.
+  Minimal overhead with no extra pointers. 
+
+Linked-list based List Implementation (DSList):
+Dynamic Size: The linked list is a singly linked list grows and shrinks as needed. It only allocates memory for the elements added.
+Each element iequires a node, which has both the value and a pointer to the next node which could create overhead.
+Since nodes are individually allocated this could lead to more fragmented memory.
+One thing thats bad is that when trying to access the last element there is no tail pointer so I have to loop through the entire linked list following pointer to pointer which seems like it would be slow.
 
 3. Which version would you use in practice. Why?
 
-   > Your answer
+   > The linked list was faster so I would use that. It also allows for a size that can change easily if I don't know how many elements I have which the array based stack does not. I would not want my array to have to double or have a bunch of unused wasted memory which is why I would choose the linked list.
 
 4. Make sure that your stack implementations does not have memory leaks.
 
@@ -60,4 +68,4 @@ rmukherji@genuse54.engr.smu.edu$
 
 5. Did you attempt any bonuses? If so, please give a brief description of what you did.
 
-   > Your answer
+   >Not yet
