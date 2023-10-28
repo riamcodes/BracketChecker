@@ -2,6 +2,7 @@
 #define DSSTACK_LINKEDLIST_H
 #include "DSList.h"
 
+//wrapper class based off linked list but with stack functionality
 template <typename T>
 class DSStack_LinkedList{
     private:
@@ -10,7 +11,6 @@ class DSStack_LinkedList{
     public:
     void push(const T& value);  // Add an element to the top
      T pop();                    // Remove and return the top element
-    //  T peek() const;              // View  top element without popping
      T peek() const;             // View top element without popping
     bool isEmpty() const;
 
@@ -18,6 +18,7 @@ class DSStack_LinkedList{
 
 
 
+//push function utilize existing linked list class
 template <typename T>
 void DSStack_LinkedList<T>::push(const T &value)
 { 
@@ -25,12 +26,15 @@ void DSStack_LinkedList<T>::push(const T &value)
 
 }
 
+//pop top element
 template <typename T>
 T DSStack_LinkedList<T>::pop()
 {
    list1.pop_back();
 }
 
+
+//peek top element
 template <typename T>
 T DSStack_LinkedList<T>::peek() const {
     if (isEmpty()) {
@@ -39,15 +43,12 @@ T DSStack_LinkedList<T>::peek() const {
     return list1.peek(); 
 }
 
+
+//is empty checker 
 template <typename T>
 bool DSStack_LinkedList<T>::isEmpty() const {
     return list1.isEmpty(); 
 }
 
-// template <typename T>
-// T DSStack_LinkedList<T>::peek() const
-// {
-//     popfront(); 
-// }
 
 #endif

@@ -1,4 +1,3 @@
-
 #include <chrono>
 #include <iostream>
 #include <fstream>
@@ -13,40 +12,44 @@
 
 using namespace std;
 
-// This function checks for matching brackets in a given file using an array-based stack.
 void BracketChecker::checkArray(char* argv) { 
-    int errorLine = 0;  // Keeps track of the current line number
-    ifstream file(argv); // Open the file with the provided filename
+    int errorLine = 0;  // Line number tracker
+    ifstream file(argv);
 
-    // Check if the file is opened successfully
+    // Check if file exists
     if (!file.good()) {
         throw invalid_argument("file could not be opened");
     }
 
     string line;
-    // Process each line in the file
+
+    // Iterate through each line in the file
     while (getline(file,line)){
         errorLine++; 
-        // Examine each character in the current line
-        for (char potentialBracket : line) {
-            // If the character is an opening bracket, push it onto the stack
-            if ((potentialBracket=='{')||(potentialBracket=='[')||(potentialBracket=='(')) {
+
+        // Check each character in the line
+        for (char potentialBracket : line){
+            
+            // If it's an opening bracket, push onto the stack
+            if ((potentialBracket=='{')||(potentialBracket=='[')||(potentialBracket=='(')){
                 bracketStack.push(potentialBracket);
             } 
-            // If the character is a closing bracket, process it
+            // If it's a closing bracket, check for its match
             else if ((potentialBracket=='}')||(potentialBracket==']')||(potentialBracket==')')) {
-                // If the stack is empty, a mismatch is detected
-                if (bracketStack.isEmpty()) {
-                    cout << "Bracket Mismatch Detected for " << potentialBracket << " in line " << errorLine << "." << endl;
-                    return;
+                // If stack is empty, there's no opening bracket to match this
+                if (bracketStack.isEmpty() == true){
+                    cout << "Bracket Mismatch Detected for " << bracketStack.peek() << " in line " << errorLine << "." << endl;
+    return;
+                    
                 }
-                char topBracket = bracketStack.peek(); // Check the top of the stack
 
-                // Check if the top of the stack has the matching opening bracket for the current closing bracket
+                char topBracket = bracketStack.peek();
+
+                // Check if top of stack is a matching opening bracket
                 if ((potentialBracket == '}' && topBracket == '{') ||
                     (potentialBracket == ']' && topBracket == '[') ||
                     (potentialBracket == ')' && topBracket == '(')) {
-                    bracketStack.pop(); // If it's a match, pop the top bracket off the stack
+                    bracketStack.pop();  // If yes, pop it off the stack
                 }
                 else {
                     cout << "Bracket Mismatch Detected for " << potentialBracket << " in line " << errorLine << "." << endl;
@@ -55,57 +58,58 @@ void BracketChecker::checkArray(char* argv) {
             }
         }
     }
+
+    file.close();
  
-    // After processing the entire file, check if there's any unmatched opening bracket left in the stack
-    if (!bracketStack.isEmpty()) {
-        cout << "Bracket Mismatch Detected for " 
-             << (bracketStack.peek() == '{' ? '}' : (bracketStack.peek() == '[' ? ']' : ')')) 
-             << " in line " << errorLine << "." << endl;
+    // Check for unmatched opening brackets left in the stack
+    if (!bracketStack.isEmpty()){
+        cout << "Bracket Mismatch Detected for " << bracketStack.peek() << " in line " << errorLine << "." << endl;
+        return;
     }
-    else {
+    else{
         cout << "Ok, Brackets Match!" << endl;
     }
-}
+} 
 
-// This function checks for matching brackets in a given file using a linked-list based stack.
 void BracketChecker::checkList(char* argv) { 
-    int errorLine = 0; // Keeps track of the current line number
-    ifstream file(argv); // Open the file with the provided filename
+    int errorLine = 0;
+    ifstream file(argv);
 
-    // Check if the file is opened successfully
+    // Check if file exists
     if (!file.good()) {
         throw invalid_argument("file could not be opened");
     }
 
     string line;
 
-    // Process each line in the file
+    // Iterate through each line in the file
     while (getline(file,line)){
         errorLine++;
         
-        // Examine each character in the current line
+        // Check each character in the line
         for (char potentialBracket : line){
             
-            // If the character is an opening bracket, push it onto the stack
+            // If it's an opening bracket, push onto the stack
             if ((potentialBracket=='{')||(potentialBracket=='[')||(potentialBracket=='(')){
                 bracketStackList.push(potentialBracket);
             } 
-            // If the character is a closing bracket, process it
+            // If it's a closing bracket, check for its match
             else if ((potentialBracket=='}')||(potentialBracket==']')||(potentialBracket==')')) {
 
-                // If the stack is empty, a mismatch is detected
+                // If stack is empty, there's no opening bracket to match this
                 if (bracketStackList.isEmpty() == true){
-                    cout << "Bracket Mismatch Detected for " << potentialBracket << " in line " << errorLine << "." << endl;
+                   cout << "Bracket Mismatch Detected for " << bracketStackList.peek() << " in line " << errorLine << "." << endl;
+    return;
                     return;
                 }
 
-                char topBracket = bracketStackList.peek(); // Check the top of the stack
+                char topBracket = bracketStackList.peek();
 
-                // Check if the top of the stack has the matching opening bracket for the current closing bracket
+                // Check if top of stack is a matching opening bracket
                 if ((potentialBracket == '}' && topBracket == '{') ||
                     (potentialBracket == ']' && topBracket == '[') ||
                     (potentialBracket == ')' && topBracket == '(')) {
-                    bracketStackList.pop(); // If it's a match, pop the top bracket off the stack
+                    bracketStackList.pop();  // If yes, pop it off the stack
                 }
                 else {
                     cout << "Bracket Mismatch Detected for " << potentialBracket << " in line " << errorLine << "." << endl;
@@ -114,10 +118,10 @@ void BracketChecker::checkList(char* argv) {
             }
         }
     }
- 
-    // After processing the entire file, check if there's any unmatched opening bracket left in the stack
+ file.close();
+    // Check for unmatched opening brackets left in the stack
     if (!bracketStackList.isEmpty()){
-        cout << "Bracket Mismatch Detected for " << (bracketStackList.peek() == '{' ? '}' : (bracketStackList.peek() == '[' ? ']' : ')')) << " in line " << errorLine << "." << endl;
+        cout << "Bracket Mismatch Detected for " << bracketStackList.peek()  << " in line " << errorLine << "." << endl;
         return;
     }
     else{

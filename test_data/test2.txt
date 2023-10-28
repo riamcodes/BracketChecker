@@ -1,0 +1,21 @@
+{
+    [This is a (sample) text file containing various]
+    types of {brackets. Some are (correctly nested)},
+    while others may not be [correctly closed.
+    
+    {
+        [Here's an example (of a) nested structure],
+        and {another one (just to add) more depth}.
+    }
+    
+    {
+        {Yet another level [(of nesting)] to make things}
+        even more complex.
+    }
+
+    [Now, let's (create an) error. I will open a bracket,
+    but won't close it properly. Here it goes {
+    
+    And finally, a {properly closed (set of brackets)} to
+    make the file (even more challenging).
+}
