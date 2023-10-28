@@ -29,6 +29,8 @@ void BracketChecker::checkArray(char* argv) {
     while (getline(file,line)){
         errorLine++; 
 
+
+
         // Check each character in the line for potential brackets
         for (char potentialBracket : line){
             
@@ -74,6 +76,8 @@ void BracketChecker::checkArray(char* argv) {
         cout << "Ok, Brackets Match!" << endl;
     }
 } 
+
+
 
 // Function to check matching brackets using linked lists
 void BracketChecker::checkList(char* argv) { 
